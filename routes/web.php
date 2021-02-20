@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('tables', ['as' => 'pages.tables', 'uses' => 'App\Http\Controllers\PageController@tables']);
 		Route::get('typography', ['as' => 'pages.typography', 'uses' => 'App\Http\Controllers\PageController@typography']);
 		Route::get('upgrade', ['as' => 'pages.upgrade', 'uses' => 'App\Http\Controllers\PageController@upgrade']);
+
+		Route::get('/noticias', 'App\Http\Controllers\NewsController@index');
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -41,3 +43,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
 
+//Route::get('/noticias', [App\Http\Controllers\NoticiasController::class, 'index'])->name('noticias');
+//Route::get('/noticias', 'App\Http\Controllers\NoticiasController@index')->name('noticias')->middleware('auth');
+//Route::get('/noticias', 'App\Http\Controllers\NewsController@index');
