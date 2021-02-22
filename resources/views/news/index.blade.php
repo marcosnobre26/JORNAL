@@ -62,14 +62,17 @@
                                     $36,738
                                     </td>
                                     <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" class="btn btn-info btn-sm btn-icon">
-                                            <i class="tim-icons icon-single-02"></i>
-                                        </button>
                                         <button type="button" rel="tooltip" class="btn btn-success btn-sm btn-icon">
-                                            <i class="tim-icons icon-settings"></i>
+                                            <a href="{{url('noticia/editar', $new->id)}}">
+                                                <i class="tim-icons icon-settings"></i>
+                                            </a>
                                         </button>
+
+                                        {{ csrf_field() }}
                                         <button type="button" rel="tooltip" class="btn btn-danger btn-sm btn-icon">
-                                            <i class="tim-icons icon-simple-remove"></i>
+                                            <a href="{{url('delete/noticia', $new->id)}}">
+                                                <i class="tim-icons icon-simple-remove"></i>
+                                            </a>
                                         </button>
                                     </td>
                                 </tr>

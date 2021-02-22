@@ -83,7 +83,7 @@ class NewsController extends Controller
         $news->delete();
 
         // Retorna com a mensagem
-        return redirect(route('news'))->with('status', __('Notícia excluída.'));
+        return redirect('noticias');
     }
 
     public function search(Request $request) {
