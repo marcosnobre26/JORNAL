@@ -37,9 +37,12 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('/noticia/create', 'App\Http\Controllers\NewsController@create');
 		Route::post('/noticia', 'App\Http\Controllers\NewsController@store');
 		Route::get('/noticia/{id}/editar', 'App\Http\Controllers\NewsController@edit');
-		Route::put('/noticia/{id}', 'App\Http\Controllers\NewsController@update');
+		Route::post('/noticia/{id}', 'App\Http\Controllers\NewsController@update');
+		Route::get('/noticia/{id}', 'App\Http\Controllers\NewsController@update');
 
 		Route::post('/search', 'App\Http\Controllers\NewsController@search');
+		Route::get('/users', 'App\Http\Controllers\NewsController@users');
+		Route::get('/user/{id}', 'App\Http\Controllers\UserController@delete');
 });
 
 Route::group(['middleware' => 'auth'], function () {

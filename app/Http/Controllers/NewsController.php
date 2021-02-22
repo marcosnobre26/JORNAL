@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\News;
+use App\Models\User;
 
 
 class NewsController extends Controller
@@ -44,15 +45,7 @@ class NewsController extends Controller
     }
 
     public function store(Request $request) {       
-        //return view('news.create');
-
-        /*$validated = $request->validate([
-            'title' => 'required|string|max:100',
-            'lead' => 'required|string|max:190',
-            'image' => 'nullable|image|max:10000', // 10MB
-            'body' => 'required|string|max:1000',
-        ]);*/
-
+        
         $news = new News([
             'title' => $request->get('title'),
             'lead' => $request->get('lead'),
@@ -95,10 +88,6 @@ class NewsController extends Controller
 
     public function search(Request $request) {
 
-        //dd($request->search);
-
-        // Noticia
-        //$noticias = News::where('user_id', Auth::id())->get();
         $news = News::where([
             ['title','!=', Null],
             ['user_id','=', Auth::id()],
@@ -112,19 +101,10 @@ class NewsController extends Controller
         ->paginate(10);
 
         return view('news.index', [ 'news' => $news ]);
+    }
 
-        /*$news = News::where(function ($query) use(filter) {
-            if($filter) {
-                $query->where('title','LIKE', "%{$filter}%");
-            }
-        })->toSql();*/
-
-        //dd($news);
-
-       
-        // Retorna com a mensagem
-        //return redirect(route('news'))->with('status', __('Notícia excluída.'));
-        //return view('news.index', compact('news'))->with('i',(request()->input('page', 1) - 1) * 5);
+    public function users(Request $request) {
+        return view('users.users', [ 'users' => User::get() ]);
     }
 
 }
