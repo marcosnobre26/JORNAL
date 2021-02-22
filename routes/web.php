@@ -34,6 +34,12 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('upgrade', ['as' => 'pages.upgrade', 'uses' => 'App\Http\Controllers\PageController@upgrade']);
 
 		Route::get('/noticias', 'App\Http\Controllers\NewsController@index');
+		Route::get('/noticia/create', 'App\Http\Controllers\NewsController@create');
+		Route::post('/noticia', 'App\Http\Controllers\NewsController@store');
+		Route::get('/noticia/{id}/editar', 'App\Http\Controllers\NewsController@edit');
+		Route::put('/noticia/{id}', 'App\Http\Controllers\NewsController@update');
+
+		Route::post('/search', 'App\Http\Controllers\NewsController@search');
 });
 
 Route::group(['middleware' => 'auth'], function () {

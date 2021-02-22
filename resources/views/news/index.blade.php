@@ -5,6 +5,21 @@
 
 <div class="row">
     <div class="col-md-12">
+        <form action="{{ url('search') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group">
+                <label for="exampleInputEmail1">Pesquisar:</label>
+                <input type="text" name="search" class="form-control" id="pesquisa" aria-describedby="emailHelp" placeholder="Aqui você pode pesquisar coisas relacionadas com as materias.">
+                <small id="search" class="form-text text-muted">Pesquise suas matérias.</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Pesquisar</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
         <div class="card ">
             <div class="card-header">
                 <h4 class="card-title"> Noticias escritas por {{Auth::user()->name}}</h4>
@@ -26,6 +41,7 @@
                                 <th class="text-center">
                                 Data
                                 </th>
+                                <th class="text-right">Actions</th>
                             </tr>
                         </thead>
                         
@@ -45,9 +61,16 @@
                                     <td class="text-center">
                                     $36,738
                                     </td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger">Deletar</button>
-                                        <button type="button" class="btn btn-warning">Editar</button>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" class="btn btn-info btn-sm btn-icon">
+                                            <i class="tim-icons icon-single-02"></i>
+                                        </button>
+                                        <button type="button" rel="tooltip" class="btn btn-success btn-sm btn-icon">
+                                            <i class="tim-icons icon-settings"></i>
+                                        </button>
+                                        <button type="button" rel="tooltip" class="btn btn-danger btn-sm btn-icon">
+                                            <i class="tim-icons icon-simple-remove"></i>
+                                        </button>
                                     </td>
                                 </tr>
                             
